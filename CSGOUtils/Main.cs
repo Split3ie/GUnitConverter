@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSGOUtils
 {
-    public class Class1
+    public class Main
     {
     }
 }

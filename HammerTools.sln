@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HammerTools", "HammerTools\HammerTools.csproj", "{01BD1061-E731-4CF8-BC66-57A81BBB1589}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSGOUtils", "CSGOUtils\CSGOUtils.csproj", "{8AF26203-376F-4D39-AFAA-92F293C6F988}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{01BD1061-E731-4CF8-BC66-57A81BBB1589}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01BD1061-E731-4CF8-BC66-57A81BBB1589}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01BD1061-E731-4CF8-BC66-57A81BBB1589}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AF26203-376F-4D39-AFAA-92F293C6F988}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AF26203-376F-4D39-AFAA-92F293C6F988}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AF26203-376F-4D39-AFAA-92F293C6F988}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AF26203-376F-4D39-AFAA-92F293C6F988}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
