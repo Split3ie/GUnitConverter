@@ -48,16 +48,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>CAF3BA73E136351F04EF784B4A623F5F9B18D143</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>11E3216C4B44C723F50623177654885BED3E3105</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>HammerTools_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>HammerUnitConverter_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>
@@ -96,7 +96,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="HammerTools_TemporaryKey.pfx" />
+    <None Include="HammerUnitConverter_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
