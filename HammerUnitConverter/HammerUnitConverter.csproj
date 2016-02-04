@@ -7,8 +7,8 @@
     <ProjectGuid>{01BD1061-E731-4CF8-BC66-57A81BBB1589}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HammerTools</RootNamespace>
-    <AssemblyName>HammerTools</AssemblyName>
+    <RootNamespace>HammerUnitsConverter</RootNamespace>
+    <AssemblyName>Hammer Units Converter</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -95,6 +95,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="HammerUnitConverter_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
