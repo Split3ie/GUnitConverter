@@ -16,7 +16,7 @@ namespace HammerUnitsConverter
 
             if (textBox1.Text == "")
             {
-                label1.Text = "Input a cm";
+                label1.Text = "Input a mm";
                 label2.Text = "";
                 return;
             }
@@ -30,7 +30,7 @@ namespace HammerUnitsConverter
                 label2.Text = string.Format(@"{0} mm = {1:0.######} units
 {2:0.####} m = {3:0.#####} units 
 {4:0.####}' =  {5:0.######} units 
-{6:0.####}'' = {7:0.#####} units", cm*10, unit*10, cm/100, unit * 10, inch, inch/0.75, foot, foot*16);
+{6:0.####}'' = {7:0.#####} units", cm*10, unit*10, cm/100, (cm/100)*52.49, inch, inch/0.75, foot, foot*16);
             }
             else
             {
@@ -40,7 +40,7 @@ namespace HammerUnitsConverter
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            if (textBox1.Text == "")
+            if (textBox2.Text == "")
             {
                 label2.Text = "Input an units";
                 return;
@@ -48,8 +48,14 @@ namespace HammerUnitsConverter
             double unit = float.Parse(textBox2.Text);
             if (Double.TryParse(textBox2.Text, out unit))
             {
-                double cm = unit * 19.05;
-                label6.Text = string.Format("{0:0.####} = {1:0.######} cm", unit, cm / 10);
+                double mm = unit * 19.05;
+                label6.Text = string.Format("{1:0.###} cm", unit, mm/10);
+                //label6.Text = string.Format("{0:0.####} = {1:0.######} mm", unit, mm / 10);
+                label2.Text = string.Format(@"{0:0.####} untis:
+{1:0.####} mm
+{2:0.####} m
+{3:0.####}'
+{4:0.####}''", unit, mm, mm/1000, unit*0.75, unit/16);
             }
             else
             {
