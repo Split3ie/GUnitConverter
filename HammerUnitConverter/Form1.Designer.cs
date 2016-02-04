@@ -113,7 +113,7 @@
             this.groupBox2.Controls.Add(this.textBox2);
             this.groupBox2.Location = new System.Drawing.Point(198, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(210, 100);
+            this.groupBox2.Size = new System.Drawing.Size(210, 97);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Unit to Cm";
