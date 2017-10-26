@@ -5,6 +5,7 @@ namespace HammerUnitsConverter
 {
     public partial class Form1 : Form
     {
+        private readonly UnitConverter UConverter = new UnitConverter();
         public Form1()
         {
             InitializeComponent();
@@ -13,7 +14,7 @@ namespace HammerUnitsConverter
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            
             if (textBox1.Text == "")
             {
                 label1.Text = "Input a mm";
@@ -23,14 +24,12 @@ namespace HammerUnitsConverter
             double cm;
             if (Double.TryParse(textBox1.Text, out cm))
             {
-                double unit = cm / 19.05;
-                label1.Text = string.Format("{0:0.##} units", unit*10);
-                double inch = cm * 0.39370079;
-                double foot = inch / 12;
-                label2.Text = string.Format(@"{0} mm = {1:0.######} units
+                UConverter.MakeConvertToUnit(cm);
+                label1.Text = string.Format("{0:0.##} units", UConverter.Unit);
+                label2.Text = string.Format(@"{0} cm = {1:0.######} units
 {2:0.####} m = {3:0.#####} units 
 {4:0.####}' =  {5:0.######} units 
-{6:0.####}'' = {7:0.#####} units", cm*10, unit*10, cm/100, (cm/100)*52.49, inch, inch/0.75, foot, foot*16);
+{6:0.####}'' = {7:0.#####} units", UConverter.Cm, UConverter.Unit, UConverter.M, (UConverter.M)*52.49, UConverter.Inch, UConverter.Inch/0.75, UConverter.Foot, UConverter.Foot*16);
             }
             else
             {
@@ -49,13 +48,14 @@ namespace HammerUnitsConverter
             if (Double.TryParse(textBox2.Text, out unit))
             {
                 double mm = unit * 19.05;
-                label6.Text = string.Format("{1:0.###} cm", unit, mm/10);
+                UConverter.MakeConvertToCm(unit);
+                label6.Text = string.Format("{1:0.###} cm", UConverter.Unit, UConverter.Cm);
                 //label6.Text = string.Format("{0:0.####} = {1:0.######} mm", unit, mm / 10);
-                label2.Text = string.Format(@"{0:0.####} untis:
+                label2.Text = string.Format(@"{0:0.####} units:
 {1:0.####} mm
 {2:0.####} m
 {3:0.####}'
-{4:0.####}''", unit, mm, mm/1000, unit*0.75, unit/16);
+{4:0.####}''", UConverter.Unit, UConverter.MM, UConverter.M, UConverter.Inch, UConverter.Foot);
             }
             else
             {
@@ -65,7 +65,7 @@ namespace HammerUnitsConverter
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://steamcommunity.com/id/bawdyq/");
+            System.Diagnostics.Process.Start("http://steamcommunity.com/id/The_Split/");
         }
     }
 }
