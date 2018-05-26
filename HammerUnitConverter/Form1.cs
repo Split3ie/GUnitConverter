@@ -1,71 +1,140 @@
-﻿using System;
+﻿using HammerUnitsConverter.Logic;
+using HammerUnitsConverter.Models;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace HammerUnitsConverter
 {
     public partial class Form1 : Form
     {
-        private readonly UnitConverter UConverter = new UnitConverter();
+        private readonly UnitConverter Converter = new UnitConverter();
+        private readonly string DeveloperUrl = @"https://steamcommunity.com/id/The_Split/";
+        private List<ConvertModel> History { get; set; }
         public Form1()
         {
             InitializeComponent();
-            //linkLabel1.Links.Add(7,6, "steamcommunity.com/id/bawdyq/");
+            History = new List<ConvertModel>();
+            historyDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void convertButton_Click(object sender, EventArgs e)
         {
-            
-            if (textBox1.Text == "")
+            var convertModel = new ConvertModel();
+            if (unitsRadioButton.Checked)
             {
-                label1.Text = "Input a mm";
-                label2.Text = "";
-                return;
+                convertModel.Units = !string.IsNullOrEmpty(unitsTextBox.Text) ? float.Parse(unitsTextBox.Text) : 0;
+                convertModel.Source = SourceScale.Unit;
             }
-            double cm;
-            if (Double.TryParse(textBox1.Text, out cm))
+            else if (cmRadioButton.Checked)
             {
-                UConverter.MakeConvertToUnit(cm);
-                label1.Text = string.Format("{0:0.##} units", UConverter.Unit);
-                label2.Text = string.Format(@"{0} cm = {1:0.######} units
-{2:0.####} m = {3:0.#####} units 
-{4:0.####}' =  {5:0.######} units 
-{6:0.####}'' = {7:0.#####} units", UConverter.Cm, UConverter.Unit, UConverter.M, (UConverter.M)*52.49, UConverter.Inch, UConverter.Inch/0.75, UConverter.Foot, UConverter.Foot*16);
+                convertModel.Cm = !string.IsNullOrEmpty(cmTextBox.Text) ? float.Parse(cmTextBox.Text) : 0;
+                convertModel.Source = SourceScale.Cm;
             }
-            else
+            else if (mRadioButton.Checked)
             {
-                label1.Text = "Wrong param!";
+                convertModel.M = !string.IsNullOrEmpty(mTextBox.Text) ? float.Parse(mTextBox.Text) : 0;
+                convertModel.Source = SourceScale.M;
+            }
+            else if (inchesRadioButton.Checked)
+            {
+                convertModel.Inches = !string.IsNullOrEmpty(inchesTextBox.Text) ? float.Parse(inchesTextBox.Text) : 0;
+                convertModel.Source = SourceScale.Inch;
+            }
+            else if (footRadioButton.Checked)
+            {
+                convertModel.Feet = !string.IsNullOrEmpty(footTextBox.Text) ? float.Parse(footTextBox.Text) : 0;
+                convertModel.Source = SourceScale.Foot;
+            }
+
+            var result = Converter.DoConvert(convertModel);
+            if (result != null)
+            {
+                RefreshView(result);
+                if (result.Units != 0 || result.Cm != 0 || result.M != 0 || result.Inches != 0 || result.Feet != 0)
+                    History.Add(result);
+
+            }
+            var bindingSource = new BindingSource();
+            History.ForEach(x => bindingSource.Add(new HistoryViewModel { Units = x.Units, Cm = x.Cm, M = x.M, Inches = x.Inches, Feet = x.Feet }));
+            historyDataGrid.DataSource = bindingSource;
+
+        }
+        private void RefreshView(ConvertModel result)
+        {
+            unitLabel.Text = result.Units.ToString();
+            cmLabel.Text = result.Cm.ToString();
+            mLabel.Text = result.M.ToString();
+            inchLabel.Text = result.Inches.ToString();
+            feetLabel.Text = result.Feet.ToString();
+
+            unitsTextBox.Text = result.Units.ToString();
+            cmTextBox.Text = result.Cm.ToString();
+            mTextBox.Text = result.M.ToString();
+            inchesTextBox.Text = result.Inches.ToString();
+            footTextBox.Text = result.Feet.ToString();
+        }
+        private void CheckKey(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == '.'))
+            { e.Handled = true; }
+            TextBox txtDecimal = sender as TextBox;
+            if (e.KeyChar == '.' && txtDecimal.Text.Contains("."))
+            {
+                e.Handled = true;
             }
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void unitsTextBox_Enter(object sender, EventArgs e)
         {
-            if (textBox2.Text == "")
+            unitsRadioButton.Checked = true;
+        }
+
+        private void cmTextBox_Enter(object sender, EventArgs e)
+        {
+            cmRadioButton.Checked = true;
+        }
+
+        private void mTextBox_Enter(object sender, EventArgs e)
+        {
+            mRadioButton.Checked = true;
+        }
+
+        private void inchesTextBox_Enter(object sender, EventArgs e)
+        {
+            inchesRadioButton.Checked = true;
+        }
+
+        private void footTextBox_Enter(object sender, EventArgs e)
+        {
+            footRadioButton.Checked = true;
+        }
+
+        private void saveHistory_Click(object sender, EventArgs e)
+        {
+            var list = new List<HistoryViewModel>();
+            History.ForEach(x => list.Add(new HistoryViewModel { Units = x.Units, Cm = x.Cm, M = x.M, Inches = x.Inches, Feet = x.Feet }));
+            var filePath = Converter.SaveToFile(list);
+            if (!string.IsNullOrEmpty(filePath))
             {
-                label2.Text = "Input an units";
-                return;
-            }
-            double unit = float.Parse(textBox2.Text);
-            if (Double.TryParse(textBox2.Text, out unit))
-            {
-                double mm = unit * 19.05;
-                UConverter.MakeConvertToCm(unit);
-                label6.Text = string.Format("{1:0.###} cm", UConverter.Unit, UConverter.Cm);
-                //label6.Text = string.Format("{0:0.####} = {1:0.######} mm", unit, mm / 10);
-                label2.Text = string.Format(@"{0:0.####} units:
-{1:0.####} mm
-{2:0.####} m
-{3:0.####}'
-{4:0.####}''", UConverter.Unit, UConverter.MM, UConverter.M, UConverter.Inch, UConverter.Foot);
-            }
-            else
-            {
-                label2.Text = "Wrong param!";
+                Process.Start("notepad.exe", filePath);
             }
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+
+        private void selectedFromHistory(object sender, DataGridViewCellEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://steamcommunity.com/id/The_Split/");
+            var row = historyDataGrid.Rows[e.RowIndex];
+            var item = row.DataBoundItem as HistoryViewModel;
+            RefreshView(new ConvertModel { Units = item.Units, Cm = item.Cm, M = item.M, Inches = item.Inches, Feet = item.Feet });
+
+        }
+
+        private void copyrightLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(DeveloperUrl);
         }
     }
 }
