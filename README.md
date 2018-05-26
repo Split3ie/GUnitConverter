@@ -1,6 +1,6 @@
 # CounterStrikeGOSDKUtils
 
-## Hammer Units Converter 
+## Hammer Unit Converter 
 
 This tool I have made for personal using when I worked on CS:GO map based by real location (You can see this map in workshop https://steamcommunity.com/sharedfiles/filedetails/?id=857973374)
 
