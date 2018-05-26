@@ -3,6 +3,7 @@ using HammerUnitsConverter.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -115,13 +116,28 @@ namespace HammerUnitsConverter
 
         private void saveHistory_Click(object sender, EventArgs e)
         {
-            var list = new List<HistoryViewModel>();
-            History.ForEach(x => list.Add(new HistoryViewModel { Units = x.Units, Cm = x.Cm, M = x.M, Inches = x.Inches, Feet = x.Feet }));
-            var filePath = Converter.SaveToFile(list);
-            if (!string.IsNullOrEmpty(filePath))
+            try
             {
-                Process.Start("notepad.exe", filePath);
+
+
+                var fileName = $"history_{DateTime.Now.ToString("ddMMyyyy")}.txt";
+                saveFileDialog1.FileName = fileName;
+                saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    var list = new List<HistoryViewModel>();
+                    History.ForEach(x => list.Add(new HistoryViewModel { Units = x.Units, Cm = x.Cm, M = x.M, Inches = x.Inches, Feet = x.Feet }));
+                    var content = Converter.GenerateFile(list);
+                    if (content != null)
+                        using (StreamWriter sw = new StreamWriter(saveFileDialog1.FileName))
+                            sw.WriteLine(content);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+
         }
 
 

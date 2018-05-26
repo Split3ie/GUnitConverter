@@ -52,6 +52,7 @@
             this.saveHistory = new System.Windows.Forms.Button();
             this.copyrightLabel = new System.Windows.Forms.LinkLabel();
             this.helpLink = new System.Windows.Forms.LinkLabel();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.historyDataGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -362,6 +363,7 @@
         private System.Windows.Forms.Button saveHistory;
         private System.Windows.Forms.LinkLabel copyrightLabel;
         private System.Windows.Forms.LinkLabel helpLink;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

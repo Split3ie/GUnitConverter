@@ -58,33 +58,21 @@ namespace HammerUnitsConverter.Logic
             }
             return convert;
         }
-        public string SaveToFile(List<HistoryViewModel> history)
+        public string GenerateFile(List<HistoryViewModel> history)
         {
             try
             {
-                var filePath = $"history/history_{DateTime.Now.ToString("ddMMyyyy")}.txt";
-                var existinfFile = File.ReadAllText(filePath);
                 var file = new StringBuilder();
-                if (!string.IsNullOrEmpty(existinfFile))
-                {
-                    file.Append(existinfFile);
-                } else
-                {
-                    file.AppendLine(string.Format("{0,-12} | {1,-12} | {2,-12} | {3,-12} | {4,-12} |", nameof(HistoryViewModel.Units), nameof(HistoryViewModel.Cm), nameof(HistoryViewModel.M), nameof(HistoryViewModel.Inches), nameof(HistoryViewModel.Feet)));// $"| {nameof(HistoryViewModel.Units)} | {nameof(HistoryViewModel.Cm)} | {nameof(HistoryViewModel.M)} | {nameof(HistoryViewModel.Inches)} | {nameof(HistoryViewModel.Foot)} |");
-                    file.AppendLine(string.Concat(Enumerable.Repeat<string>("-", file.Length)));
-                }
+
+                file.AppendLine(string.Format("{0,-12} | {1,-12} | {2,-12} | {3,-12} | {4,-12} |", nameof(HistoryViewModel.Units), nameof(HistoryViewModel.Cm), nameof(HistoryViewModel.M), nameof(HistoryViewModel.Inches), nameof(HistoryViewModel.Feet)));// $"| {nameof(HistoryViewModel.Units)} | {nameof(HistoryViewModel.Cm)} | {nameof(HistoryViewModel.M)} | {nameof(HistoryViewModel.Inches)} | {nameof(HistoryViewModel.Foot)} |");
+                file.AppendLine(string.Concat(Enumerable.Repeat<string>("-", file.Length)));
 
                 foreach (var item in history)
                 {
                     file.AppendLine(string.Format("{0,-12} | {1,-12} | {2,-12} | {3,-12} | {4,-12} |", item.Units, item.Cm, item.M, item.Inches, item.Feet));// $"|  | {item.Cm} | {item.M} | {item.Inches} | {item.Foot} |");
                 }
-                if (!Directory.Exists("history"))
-                {
-                    Directory.CreateDirectory("history");
-                }
-                
-                File.WriteAllText(filePath, file.ToString());
-                return filePath;
+
+                return file.ToString();
             }
             catch
             {
