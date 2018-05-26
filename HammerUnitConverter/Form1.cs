@@ -12,6 +12,7 @@ namespace HammerUnitsConverter
     {
         private readonly UnitConverter Converter = new UnitConverter();
         private readonly string DeveloperUrl = @"https://steamcommunity.com/id/The_Split/";
+        private readonly string HelpUrl = @"https://developer.valvesoftware.com/wiki/Dimensions";
         private List<ConvertModel> History { get; set; }
         public Form1()
         {
@@ -135,6 +136,11 @@ namespace HammerUnitsConverter
         private void copyrightLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start(DeveloperUrl);
+        }
+
+        private void helpLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(HelpUrl);
         }
     }
 }

@@ -50,6 +50,7 @@
             this.unitsTextBox = new System.Windows.Forms.TextBox();
             this.saveHistory = new System.Windows.Forms.Button();
             this.copyrightLabel = new System.Windows.Forms.LinkLabel();
+            this.helpLink = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.historyDataGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -57,14 +58,15 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.helpLink);
             this.panel1.Controls.Add(this.saveHistory);
             this.panel1.Controls.Add(this.historyLabel);
             this.panel1.Controls.Add(this.copyrightLabel);
             this.panel1.Controls.Add(this.historyDataGrid);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(3, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(572, 544);
+            this.panel1.Size = new System.Drawing.Size(572, 553);
             this.panel1.TabIndex = 0;
             // 
             // historyLabel
@@ -89,7 +91,7 @@
             this.historyDataGrid.RowHeadersVisible = false;
             this.historyDataGrid.RowTemplate.ReadOnly = true;
             this.historyDataGrid.ShowEditingIcon = false;
-            this.historyDataGrid.Size = new System.Drawing.Size(545, 325);
+            this.historyDataGrid.Size = new System.Drawing.Size(545, 332);
             this.historyDataGrid.TabIndex = 1;
             this.historyDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.selectedFromHistory);
             // 
@@ -280,7 +282,7 @@
             // 
             // saveHistory
             // 
-            this.saveHistory.Location = new System.Drawing.Point(484, 514);
+            this.saveHistory.Location = new System.Drawing.Point(478, 524);
             this.saveHistory.Name = "saveHistory";
             this.saveHistory.Size = new System.Drawing.Size(75, 23);
             this.saveHistory.TabIndex = 3;
@@ -293,7 +295,7 @@
             this.copyrightLabel.AutoSize = true;
             this.copyrightLabel.LinkArea = new System.Windows.Forms.LinkArea(12, 5);
             this.copyrightLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.copyrightLabel.Location = new System.Drawing.Point(248, 521);
+            this.copyrightLabel.Location = new System.Drawing.Point(237, 530);
             this.copyrightLabel.Name = "copyrightLabel";
             this.copyrightLabel.Size = new System.Drawing.Size(95, 17);
             this.copyrightLabel.TabIndex = 1;
@@ -302,14 +304,25 @@
             this.copyrightLabel.UseCompatibleTextRendering = true;
             this.copyrightLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.copyrightLabel_LinkClicked);
             // 
+            // helpLink
+            // 
+            this.helpLink.AutoSize = true;
+            this.helpLink.Location = new System.Drawing.Point(17, 529);
+            this.helpLink.Name = "helpLink";
+            this.helpLink.Size = new System.Drawing.Size(29, 13);
+            this.helpLink.TabIndex = 4;
+            this.helpLink.TabStop = true;
+            this.helpLink.Text = "Help";
+            this.helpLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.helpLink_LinkClicked);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 561);
+            this.ClientSize = new System.Drawing.Size(584, 561);
             this.Controls.Add(this.panel1);
-            this.MaximumSize = new System.Drawing.Size(614, 600);
-            this.MinimumSize = new System.Drawing.Size(614, 600);
+            this.MaximumSize = new System.Drawing.Size(600, 600);
+            this.MinimumSize = new System.Drawing.Size(600, 600);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "Hammer Unit Converter";
@@ -346,6 +359,7 @@
         private System.Windows.Forms.RadioButton mRadioButton;
         private System.Windows.Forms.Button saveHistory;
         private System.Windows.Forms.LinkLabel copyrightLabel;
+        private System.Windows.Forms.LinkLabel helpLink;
     }
 }
 
