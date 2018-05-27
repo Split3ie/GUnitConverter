@@ -12,7 +12,7 @@ I don't know if this tool will be useful for someone but if it will - I will be 
 
 ### Generated File
 
-![generatedfile](https://user-images.githubusercontent.com/7195853/40583772-a1b2a504-619d-11e8-86d9-2df4f99ceded.png)
+![Generated file](https://user-images.githubusercontent.com/7195853/40583781-d3173a92-619d-11e8-98eb-65aed5cb36f9.png)
 
 #### Options:
 
