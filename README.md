@@ -1,9 +1,10 @@
 # CounterStrikeGOSDKUtils
 
-Hammer Units Converter
+## Hammer Unit Converter 
+
 This tool I have made for personal using when I worked on CS:GO map based by real location (You can see this map in workshop https://steamcommunity.com/sharedfiles/filedetails/?id=857973374)
 
-With this tool you can easly convert dimensions from Hammer SDK Unit to Cm, M, Inches, Feet and vice versa.
+With this tool you can easily convert dimensions from Hammer SDK Unit to Cm, M, Inches, Feet and vice versa.
 I don't know if this tool will be useful for someone but if it will - I will be happy :)
 ### Main window
 
@@ -13,7 +14,7 @@ I don't know if this tool will be useful for someone but if it will - I will be 
 
 ![generatedfile](https://user-images.githubusercontent.com/7195853/40579544-5b62a236-6132-11e8-9bc4-ee8a9a14ca55.png) 
 
-## Options:
+#### Options:
 
 * Convertion dimensions;
 * View history;
