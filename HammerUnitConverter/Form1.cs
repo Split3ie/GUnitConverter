@@ -118,19 +118,19 @@ namespace HammerUnitsConverter
         {
             try
             {
-
-
-                var fileName = $"history_{DateTime.Now.ToString("ddMMyyyy")}.txt";
-                saveFileDialog1.FileName = fileName;
-                saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                var list = new List<HistoryViewModel>();
+                History.ForEach(x => list.Add(new HistoryViewModel { Units = x.Units, Cm = x.Cm, M = x.M, Inches = x.Inches, Feet = x.Feet }));
+                var content = Converter.GenerateFile(list);
+                if (content != null)
                 {
-                    var list = new List<HistoryViewModel>();
-                    History.ForEach(x => list.Add(new HistoryViewModel { Units = x.Units, Cm = x.Cm, M = x.M, Inches = x.Inches, Feet = x.Feet }));
-                    var content = Converter.GenerateFile(list);
-                    if (content != null)
+                    var fileName = $"history_{DateTime.Now.ToString("ddMMyyyy")}.txt";
+                    saveFileDialog1.FileName = fileName;
+                    saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    {
                         using (StreamWriter sw = new StreamWriter(saveFileDialog1.FileName))
                             sw.WriteLine(content);
+                    }
                 }
             }
             catch (Exception ex)

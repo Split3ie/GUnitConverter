@@ -30,7 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.helpLink = new System.Windows.Forms.LinkLabel();
+            this.saveHistory = new System.Windows.Forms.Button();
             this.historyLabel = new System.Windows.Forms.Label();
+            this.copyrightLabel = new System.Windows.Forms.LinkLabel();
             this.historyDataGrid = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.footRadioButton = new System.Windows.Forms.RadioButton();
@@ -49,9 +52,6 @@
             this.inchesTextBox = new System.Windows.Forms.TextBox();
             this.cmTextBox = new System.Windows.Forms.TextBox();
             this.unitsTextBox = new System.Windows.Forms.TextBox();
-            this.saveHistory = new System.Windows.Forms.Button();
-            this.copyrightLabel = new System.Windows.Forms.LinkLabel();
-            this.helpLink = new System.Windows.Forms.LinkLabel();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.historyDataGrid)).BeginInit();
@@ -71,6 +71,27 @@
             this.panel1.Size = new System.Drawing.Size(572, 553);
             this.panel1.TabIndex = 0;
             // 
+            // helpLink
+            // 
+            this.helpLink.AutoSize = true;
+            this.helpLink.Location = new System.Drawing.Point(17, 529);
+            this.helpLink.Name = "helpLink";
+            this.helpLink.Size = new System.Drawing.Size(29, 13);
+            this.helpLink.TabIndex = 4;
+            this.helpLink.TabStop = true;
+            this.helpLink.Text = "Help";
+            this.helpLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.helpLink_LinkClicked);
+            // 
+            // saveHistory
+            // 
+            this.saveHistory.Location = new System.Drawing.Point(478, 524);
+            this.saveHistory.Name = "saveHistory";
+            this.saveHistory.Size = new System.Drawing.Size(75, 23);
+            this.saveHistory.TabIndex = 3;
+            this.saveHistory.Text = "Save as file";
+            this.saveHistory.UseVisualStyleBackColor = true;
+            this.saveHistory.Click += new System.EventHandler(this.saveHistory_Click);
+            // 
             // historyLabel
             // 
             this.historyLabel.AutoSize = true;
@@ -79,6 +100,20 @@
             this.historyLabel.Size = new System.Drawing.Size(39, 13);
             this.historyLabel.TabIndex = 2;
             this.historyLabel.Text = "History";
+            // 
+            // copyrightLabel
+            // 
+            this.copyrightLabel.AutoSize = true;
+            this.copyrightLabel.LinkArea = new System.Windows.Forms.LinkArea(12, 5);
+            this.copyrightLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.copyrightLabel.Location = new System.Drawing.Point(237, 530);
+            this.copyrightLabel.Name = "copyrightLabel";
+            this.copyrightLabel.Size = new System.Drawing.Size(95, 17);
+            this.copyrightLabel.TabIndex = 1;
+            this.copyrightLabel.TabStop = true;
+            this.copyrightLabel.Text = "2016-2018 © Split";
+            this.copyrightLabel.UseCompatibleTextRendering = true;
+            this.copyrightLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.copyrightLabel_LinkClicked);
             // 
             // historyDataGrid
             // 
@@ -281,41 +316,6 @@
             this.unitsTextBox.TabIndex = 1;
             this.unitsTextBox.Enter += new System.EventHandler(this.unitsTextBox_Enter);
             this.unitsTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckKey);
-            // 
-            // saveHistory
-            // 
-            this.saveHistory.Location = new System.Drawing.Point(478, 524);
-            this.saveHistory.Name = "saveHistory";
-            this.saveHistory.Size = new System.Drawing.Size(75, 23);
-            this.saveHistory.TabIndex = 3;
-            this.saveHistory.Text = "Save as file";
-            this.saveHistory.UseVisualStyleBackColor = true;
-            this.saveHistory.Click += new System.EventHandler(this.saveHistory_Click);
-            // 
-            // copyrightLabel
-            // 
-            this.copyrightLabel.AutoSize = true;
-            this.copyrightLabel.LinkArea = new System.Windows.Forms.LinkArea(12, 5);
-            this.copyrightLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.copyrightLabel.Location = new System.Drawing.Point(237, 530);
-            this.copyrightLabel.Name = "copyrightLabel";
-            this.copyrightLabel.Size = new System.Drawing.Size(95, 17);
-            this.copyrightLabel.TabIndex = 1;
-            this.copyrightLabel.TabStop = true;
-            this.copyrightLabel.Text = "2016-2018 © Split";
-            this.copyrightLabel.UseCompatibleTextRendering = true;
-            this.copyrightLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.copyrightLabel_LinkClicked);
-            // 
-            // helpLink
-            // 
-            this.helpLink.AutoSize = true;
-            this.helpLink.Location = new System.Drawing.Point(17, 529);
-            this.helpLink.Name = "helpLink";
-            this.helpLink.Size = new System.Drawing.Size(29, 13);
-            this.helpLink.TabIndex = 4;
-            this.helpLink.TabStop = true;
-            this.helpLink.Text = "Help";
-            this.helpLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.helpLink_LinkClicked);
             // 
             // Form1
             // 
