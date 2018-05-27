@@ -53,6 +53,7 @@
             this.cmTextBox = new System.Windows.Forms.TextBox();
             this.unitsTextBox = new System.Windows.Forms.TextBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.clearButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.historyDataGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -60,6 +61,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.clearButton);
             this.panel1.Controls.Add(this.helpLink);
             this.panel1.Controls.Add(this.saveHistory);
             this.panel1.Controls.Add(this.historyLabel);
@@ -317,6 +319,16 @@
             this.unitsTextBox.Enter += new System.EventHandler(this.unitsTextBox_Enter);
             this.unitsTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckKey);
             // 
+            // clearButton
+            // 
+            this.clearButton.Location = new System.Drawing.Point(397, 523);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(75, 23);
+            this.clearButton.TabIndex = 5;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,6 +376,7 @@
         private System.Windows.Forms.LinkLabel copyrightLabel;
         private System.Windows.Forms.LinkLabel helpLink;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button clearButton;
     }
 }
 

@@ -56,13 +56,17 @@ namespace HammerUnitsConverter
             {
                 RefreshView(result);
                 if (result.Units != 0 || result.Cm != 0 || result.M != 0 || result.Inches != 0 || result.Feet != 0)
-                    History.Add(result);
-
+                    History.Insert(0,result);
             }
+
+            RefreshGrid();
+        }
+
+        private void RefreshGrid()
+        {
             var bindingSource = new BindingSource();
             History.ForEach(x => bindingSource.Add(new HistoryViewModel { Units = x.Units, Cm = x.Cm, M = x.M, Inches = x.Inches, Feet = x.Feet }));
             historyDataGrid.DataSource = bindingSource;
-
         }
         private void RefreshView(ConvertModel result)
         {
@@ -157,6 +161,13 @@ namespace HammerUnitsConverter
         private void helpLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start(HelpUrl);
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            History.Clear();
+            RefreshGrid();
+            //RefreshView(new ConvertModel());
         }
     }
 }
