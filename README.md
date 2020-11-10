@@ -1,4 +1,4 @@
-# CounterStrikeGOSDKUtils
+# Hammer SDK Tools
 
 ## Hammer Unit Converter 
 
