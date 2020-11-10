@@ -1,4 +1,6 @@
-﻿namespace HammerUnitsConverter
+﻿using System;
+
+namespace HammerUnitsConverter
 {
     partial class Form1
     {
@@ -113,7 +115,7 @@
             this.copyrightLabel.Size = new System.Drawing.Size(95, 17);
             this.copyrightLabel.TabIndex = 1;
             this.copyrightLabel.TabStop = true;
-            this.copyrightLabel.Text = "2016-2018 © Split";
+            this.copyrightLabel.Text = $"2016 - {DateTime.Now.Year}©Split";
             this.copyrightLabel.UseCompatibleTextRendering = true;
             this.copyrightLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.copyrightLabel_LinkClicked);
             // 
