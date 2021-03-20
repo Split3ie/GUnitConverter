@@ -1,4 +1,5 @@
-# Hammer SDK Tools
+# GUnit Converter
+Convert metrics to game's dimensions
 
 ## Hammer Unit Converter 
 
