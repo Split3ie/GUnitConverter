@@ -1,0 +1,30 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:ldwidg.GameUnitConverter.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="viewModels:SettingsViewModel"
+             x:Class="ldwidg.GameUnitConverter.Views.SettingsView">
+    <DockPanel>
+        <Panel DockPanel.Dock="Top">
+            <Grid>
+            <TextBox Grid.Row="0" Grid.Column="0" 
+                     Text="{Binding ImportFilePath}" 
+                     Watermark="Import file with game unit settings.." />
+            <Button Click="OpenFileDialog" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" 
+                    Content="Open File"></Button>
+            </Grid>
+            <ProgressBar IsIndeterminate="True" IsVisible="{Binding IsBusy}" />
+        </Panel>
+        <Button Content="Import Settings"
+                DockPanel.Dock="Bottom"
+                HorizontalAlignment="Center"
+                Command="{Binding SaveGameSettingsCommand}" />
+        <ListBox IsVisible="{Binding !IsBusy}"
+                 ItemsSource="{Binding GamesToImport}"
+                 SelectedItems="{Binding SelectedGames}"
+                 SelectionMode="Multiple,Toggle" />
+        <CheckBox IsChecked="{Binding IsSelectAll}" Content="Select All"></CheckBox>
+    </DockPanel>
+</UserControl>
